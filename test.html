@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      id="FORM_ID"
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbzwF1YB9JqdNQDipyAAhWmcPH-ZCIVe2YTM42KE9yLbKVJL3Wp8nIe_P27b6BT40lCM/exec"
+    >
+      <input name="Email" type="email" placeholder="Email" required />
+      <input name="Name" type="text" placeholder="Name" required />
+      <button type="submit">Send</button>
+    </form>
+
+    <script type="text/javascript">
+      window.addEventListener("DOMContentLoaded", function () {
+        const yourForm = document.getElementById("FORM_ID");
+        yourForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(yourForm);
+          const action = e.target.action;
+          fetch(action, {
+            method: "POST",
+            body: data,
+          }).then(() => {
+            console.log("success!!!!");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
